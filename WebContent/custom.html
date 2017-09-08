@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="KingcomTek-lidongyang">
+
+<title>金讯科技|透传云</title>
+<link rel="icon" type="image/png" href="pic/favicon.png">
+<!-- Bootstrap core CSS -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="layui/css/layui.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="bootstrap/js/html5shiv.min.js"></script>
+      <script src="bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Custom styles for this template -->
+<link href="custom/custom.css" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar-right-bar"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="kt-brand" href="#home" aria-controls="home" role="tab"
+				id="a_tab_home" data-toggle="tab">金讯科技透传云</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-right-bar">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					id="a_custom_account" data-toggle="dropdown" role="button"
+					aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#" data-toggle="modal"
+							data-target="#modal_modify_custom" id="a_modify_cus_mes">修改用户资料</a></li>
+						<li><a href="#" data-toggle="modal"
+							data-target="#modal_modify_psw" id="a_modify_cus_psw">修改用户密码</a></li>
+						<li><a href="#" data-toggle="modal"
+							data-target="#modal_modify_d_psw" id="a_modify_d_psw">默认接入密码</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="DtuLogin.html">退出系统</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- content -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2 col-md-1 kt-sidebar">
+				<ul class="kt-ul-sidebar">
+					<li id="li_tab_d"><a href="#device" aria-controls="device"
+						role="tab" data-toggle="tab" id="a_device_tab"><span
+							class="glyphicon glyphicon-cog" aria-hidden="true"></span><span
+							class="kt-menu-title">设备管理</span></a></li>
+					<li id="li_tab_g"><a href="#group" aria-controls="group"
+						role="tab" data-toggle="tab" id="a_group_tab"><span
+							class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span
+							class="kt-menu-title">透传组管理</span></a></li>
+					<!--	<li><a href="#custom" aria-controls="custom" role="tab"
+						data-toggle="tab"><span class="glyphicon glyphicon-user"
+							aria-hidden="true"></span><span class="kt-menu-title">客户管理</span></a></li> -->
+					<li id="li_tab_v"><a href="#v_device" aria-controls="v_device"
+						role="tab" data-toggle="tab" id="a_virtual_tab"><span
+							class="glyphicon glyphicon-dashboard" aria-hidden="true"></span><span
+							class="kt-menu-title">虚拟设备</span></a></li>
+				</ul>
+			</div>
+			<div
+				class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 kt-main">
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade active in" id="home">
+						<div class="kt-tab-content">
+							<div class="kt-home-a">
+								<h4 class="kt-tab-title">欢迎使用金讯科技透传云</h4>
+							</div>
+							<div class="kt-home-a">
+								<h4 class="kt-tab-title">使用流程</h4>
+							</div>
+							<div class="kt-home-a">
+								<h4 class="kt-tab-title">快速开始</h4>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="device">
+						<div class="kt-device-content">
+							<div class="row">
+								<div class="col-md-6">
+									<button class="btn btn-primary" id="btn_add_device"
+										data-toggle="modal" data-target="#add_device_modal">添加</button>
+									<button class="btn btn-primary" id="btn_add_list_device"
+										data-toggle="modal" data-target="#add_list_device_modal">批量添加</button>
+									<button class="btn btn-primary" id="btn_delete_list_device">批量删除</button>
+								</div>
+								<div class="input-group col-md-3">
+									<input type="text" class="form-control"
+										id="input_device_search" placeholder="请输入设备编号" name="d_s_num">
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-primary"
+											id="btn_query_device">查询</button>
+										<button type="button" class="btn btn-primary dropdown-toggle"
+											data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false" id="btn_d_s_c">
+											设备编号 <span class="caret"></span> <span class="sr-only"></span>
+										</button>
+										<ul class="dropdown-menu dropdown-menu-right">
+											<li><a href="#" id="a_search_type_num">设备编号查询</a></li>
+											<li><a href="#" id="a_search_type_name">设备名称查询</a></li>
+											<!--<li><a href="#" id="a_search_type_belong">所属用户查询</a></li> 
+											<li role="separator" class="divider"></li>
+											<li><a href="#" id="a_search_type_status">设备状态查询</a></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<table class="table table-striped kt-table" id="table_device">
+								<thead>
+									<tr>
+										<th style="width: 4%"><input id="input_device_box"
+											type="checkbox"></th>
+										<th style="width: 16%">设备编号</th>
+										<th style="width: 16%">设备名称</th>
+										<th style="width: 16%">设备密码</th>
+										<th style="width: 16%">设备状态</th>
+										<th style="width: 16%">详细信息</th>
+										<th style="width: 16%">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="kt-table-loading" colspan="20"><img
+											src="pic/loading.gif" alt="some_text"></td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="div_device_page"></div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="group">
+						<div class="kt-device-content">
+							<div class="row">
+								<div class="col-md-6">
+									<button class="btn btn-primary" id="btn_add_group"
+										data-toggle="modal" data-target="#add_group_modal">添加</button>
+								</div>
+								<div class="input-group col-md-3">
+									<input type="text" class="form-control" id="input_group_search"
+										placeholder="请输入组名">
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-primary" id="btn_group_search">查询</button>
+									</div>
+								</div>
+							</div>
+
+							<table class="table table-striped kt-table" id="table_group">
+								<thead>
+									<tr>
+										<th style="width: 4%"><input type="checkbox"
+											id="input_group_box"></th>
+										<th style="width: 16%">组编号</th>
+										<th style="width: 16%">组名称</th>
+										<th style="width: 16%">左边设备数量</th>
+										<th style="width: 16%">右边设备数量</th>
+										<th style="width: 16%">详细信息</th>
+										<th style="width: 16%">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="kt-table-loading" colspan="20"><img
+											src="pic/loading.gif" alt="some_text"></td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="div_group_page"></div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="custom">custom</div>
+					<div role="tabpanel" class="tab-pane fade" id="v_device">
+						<div class="kt-virtual-a">
+							<h4 class="kt-tab-title">虚拟设备使用说明：</h4>
+							<p>&nbsp;
+							<p>1.暂支持两个虚拟设备；
+							<p>2.虚拟设备是前端临时生成，关闭或者刷新页面即消失；
+							<P>3.虚拟设备可以向固定编号设备发送信息，同时接收该设备信息以便调试。
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="col-md-6">
+									<div class="input-group">
+										<input type="text" class="form-control"
+											placeholder="输入设备编号点击连接" id="input_a_virtual_to_d"> <span
+											class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												id="btn_a_con_d">连接设备</button>
+										</span>
+									</div>
+								</div>
+								<div class="col-md-6" id="div_send_a">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="输入要发送信息"
+											id="input_a_to_d"> <span class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												id="btn_a_sen_d">发送信息</button>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<br>
+									<textarea class="form-control kt-textarea kt-virtual-textarea"
+										spellcheck="false" rows="30" cols="20"
+										id="text_a_virtual_show" readonly></textarea>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="col-md-6">
+									<div class="input-group">
+										<input type="text" class="form-control"
+											placeholder="输入设备编号点击连接" id="input_b_virtual_to_d"> <span
+											class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												id="btn_b_con_d">连接设备</button>
+										</span>
+									</div>
+								</div>
+								<div class="col-md-6" id="div_send_b">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="输入要发送信息"
+											id="input_b_to_d"> <span class="input-group-btn">
+											<button class="btn btn-default" type="button"
+												id="btn_b_sen_d">发送信息</button>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<br>
+									<textarea class="form-control kt-textarea kt-virtual-textarea"
+										spellcheck="false" rows="30" cols="20"
+										id="text_b_virtual_show" readonly></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 添加设备模态窗 -->
+	<div class="modal fade kt-modal-device" tabindex="-1" role="dialog"
+		id="add_device_modal" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">添加单个设备</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-md-offset-1 col-sm-3 control-label">设备名称：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_d_name"
+									placeholder="请输入设备名称*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备编号：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_d_num"
+									placeholder="必须为数字，不超过12位*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备密码：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_d_psw"
+									placeholder="请输入设备密码*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备描述：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_d_mes"
+									placeholder="请输入设备描述">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btn-m-d-add">添加设备</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加多个设备模态窗 -->
+	<div class="modal fade kt-modal-device" tabindex="-1" role="dialog"
+		id="add_list_device_modal" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">添加批量设备</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-md-offset-1 col-sm-3 control-label">设备名称：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_l_d_name"
+									placeholder="请输入设备名称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">起始编号：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_f_d_num"
+									placeholder="必须为数字，不超过12位*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">结束编号：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_s_d_num"
+									placeholder="必须为数字，不超过12位*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">编号间隔：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_g_d_num" value="1"
+									placeholder="必须为数字*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备密码：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_l_d_psw"
+									placeholder="请输入设备密码*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备描述：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_l_d_mes"
+									placeholder="请输入设备描述">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btn-m-l_d-add">添加批量设备</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 添加组模态窗 -->
+	<div class="modal fade kt-modal-group" tabindex="-1" role="dialog"
+		id="add_group_modal" data-backdrop="static">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">添加透传组</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-md-offset-1 col-sm-3 control-label">透传组名称：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_g_name"
+									placeholder="请输入透传组名称*">
+							</div>
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="kt-div-select-group">
+								<table
+									class="table table-striped kt-table kt-table-select-group"
+									id="table_select_a">
+									<thead>
+										<tr>
+											<th style="width: 8%"><input type="checkbox"
+												id="input_select_a"></th>
+											<th style="width: 46%">设备编号</th>
+											<th style="width: 46%">设备名称</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="kt-table-loading" colspan="20"><img
+												src="pic/loading.gif" alt="some_text"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<button type="button" class="btn btn-primary" id="btn_a_side">
+								添加选中设备&nbsp;<span class="glyphicon glyphicon-save"
+									aria-hidden="true"></span>
+							</button>
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_a_side"></textarea>
+						</div>
+						<div class="col-md-6">
+							<div class="kt-div-select-group">
+								<table
+									class="table table-striped kt-table kt-table-select-group"
+									id="table_select_b">
+									<thead>
+										<tr>
+											<th style="width: 8%"><input type="checkbox"
+												id="input_select_b"></th>
+											<th style="width: 46%">设备编号</th>
+											<th style="width: 46%">设备名称</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="kt-table-loading" colspan="20"><img
+												src="pic/loading.gif" alt="some_text"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<button type="button" class="btn btn-primary" id="btn_b_side">
+								添加选中设备&nbsp;<span class="glyphicon glyphicon-save"
+									aria-hidden="true"></span>
+							</button>
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_b_side"></textarea>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-warning" id="btn-m-g-reset">重置</button>
+					<button type="button" class="btn btn-primary" id="btn-m-g-add">添加透传组</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 显示组信息模态窗 -->
+	<div class="modal fade kt-modal-group-show" tabindex="-1" role="dialog"
+		id="modal_group_detail" data-backdrop="static">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">透传组信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">透传组编号：</label>
+							<div class="col-sm-4">
+								<label class="control-label" id="input_m_s_g_id"></label>
+							</div>
+
+							<label class="col-sm-2 control-label">透传组名称：</label>
+							<div class="col-sm-4">
+								<label class="control-label" id="input_m_s_g_name"></label>
+							</div>
+
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-md-6">
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_s_a_side"></textarea>
+						</div>
+						<div class="col-md-6">
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_s_b_side"></textarea>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改用户资料模态窗 -->
+	<div id="modal_modify_custom" class="modal fade" tabindex="-1"
+		role="dialog" data-backdrop="false">
+		<div class="modal-dialog kt-modal-register" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">修改用户资料</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">账户：</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="input_modify_account" disabled
+									placeholder="字母开头,不少于6位*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">公司名称：</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="input_modify_name"
+									placeholder="输入公司名称*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">公司邮箱：</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="input_modify_email"
+									placeholder="输入公司邮箱*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">邮箱验证码：</label>
+							<div class="col-sm-8">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="输入邮箱验证码*"
+										id=""> <span class="input-group-btn">
+										<button class="btn btn-default" type="button"
+											id="btn_get_e_code">获取验证码</button>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">公司地址：</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="input_modify_addr"
+									placeholder="输入公司地址">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">联系电话：</label>
+							<div class="col-sm-8">
+								<input class="form-control" id="input_modify_phone"
+									placeholder="输入联系电话">
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						id="btn_submit_modify_cus">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改用户密码模态窗 -->
+	<div id="modal_modify_psw" class="modal fade" tabindex="-1"
+		role="dialog" data-backdrop="false">
+		<div class="modal-dialog kt-modal-register" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">修改密码</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">原始密码：</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="input_old_psw"
+									placeholder="输入原始密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">新密码：</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="input_new_psw"
+									placeholder="输入新密码*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">确认新密码：</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="input_new_psw_d"
+									placeholder="再次输入新密码*">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="btn_modify_psw">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改默认设备密码模态窗 -->
+	<div id="modal_modify_d_psw" class="modal fade" tabindex="-1"
+		role="dialog" data-backdrop="false">
+		<div class="modal-dialog kt-modal-register" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">修改设备默认密码</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">默认设备密码：</label>
+							<div class="col-sm-7">
+								<input class="form-control" id="input_default_d_psw"
+									placeholder="输入密码*">
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="btn_modify_d_psw">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 设备详细信息模态窗 -->
+	<div id="modal_device_detail" class="modal fade" tabindex="-1"
+		role="dialog" data-backdrop="false">
+		<div class="modal-dialog kt-modal-register" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">设备详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">设备编号：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_id"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">设备名称：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_name"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">设备密码：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_psw"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">设备状态：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_status"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">生成时间：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_c_time"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">上次修改时间：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_m_time"></label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">设备描述：</label>
+							<div class="col-sm-8">
+								<label class="control-label" id="lable_d_mes"></label>
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改设备模态窗 -->
+	<div class="modal fade kt-modal-device" tabindex="-1" role="dialog"
+		id="modal_modify_device" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">修改设备信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备编号：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_m_d_num" disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-md-offset-1 col-sm-3 control-label">设备名称：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_m_d_name"
+									placeholder="请输入设备名称*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备密码：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_m_d_psw"
+									placeholder="请输入设备密码*">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3"
+								class="col-md-offset-1 col-sm-3 control-label">设备描述：</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="input_m_m_d_mes"
+									placeholder="请输入设备描述">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btn_m_m_d_submit">提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改组模态窗 -->
+	<div class="modal fade kt-modal-group" tabindex="-1" role="dialog"
+		id="modal_modify_group" data-backdrop="static">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">修改透传组</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">透传组编号：</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input_m_m_g_id" disabled>
+							</div>
+							<label for="" class="col-sm-2 control-label">透传组名称：</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="input_m_m_g_name"
+									placeholder="请输入透传组名称*">
+							</div>
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="kt-div-select-group">
+								<table
+									class="table table-striped kt-table kt-table-select-group"
+									id="table_m_select_a">
+									<thead>
+										<tr>
+											<th style="width: 8%"><input type="checkbox"
+												id="input_m_select_a"></th>
+											<th style="width: 46%">设备编号</th>
+											<th style="width: 46%">设备名称</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="kt-table-loading" colspan="20"><img
+												src="pic/loading.gif" alt="some_text"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<button type="button" class="btn btn-primary" id="btn_m_a_side">
+								添加选中设备&nbsp;<span class="glyphicon glyphicon-save"
+									aria-hidden="true"></span>
+							</button>
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_m_a_side"></textarea>
+						</div>
+						<div class="col-md-6">
+							<div class="kt-div-select-group">
+								<table
+									class="table table-striped kt-table kt-table-select-group"
+									id="table_m_select_b">
+									<thead>
+										<tr>
+											<th style="width: 8%"><input type="checkbox"
+												id="input_m_select_b"></th>
+											<th style="width: 46%">设备编号</th>
+											<th style="width: 46%">设备名称</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="kt-table-loading" colspan="20"><img
+												src="pic/loading.gif" alt="some_text"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<button type="button" class="btn btn-primary" id="btn_m_b_side">
+								添加选中设备&nbsp;<span class="glyphicon glyphicon-save"
+									aria-hidden="true"></span>
+							</button>
+							<textarea class="form-control kt-textarea" disabled rows="8"
+								id="text_m_b_side"></textarea>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="btn_m_m_g_modify">修改透传组</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="jquery/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="layui/layui.js"></script>
+	<script src="custom/Validate.js"></script>
+	<script src="custom/socket.js"></script>
+	<script src="custom/custom.js"></script>
+</body>
+</html>

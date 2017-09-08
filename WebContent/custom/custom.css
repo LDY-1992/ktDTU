@@ -1,0 +1,330 @@
+@CHARSET "UTF-8";
+/*表格*/
+.btn-primary {
+	background-color: #3A9CB1;
+}
+
+.kt-table {
+	margin-top: 15px;
+}
+
+.kt-table>thead>tr>th, .kt-table>tbody>tr>th, .kt-table>tfoot>tr>th,
+	.kt-table>thead>tr>td, .kt-table>tbody>tr>td, .kt-table>tfoot>tr>td {
+	border: 0px;
+}
+
+.kt-table>tbody>tr:nth-child(odd) {
+	background-color: #f0f0f0;
+}
+
+.kt-table th, td {
+	text-align: center;
+}
+
+.kt-table a {
+	text-decoration: none;
+	cursor: pointer;
+	color:#3A9CB1;
+}
+
+.kt-table a:hover{
+	color:#FF5722;
+}
+
+.kt-table>thead {
+	background-color: #F0E6DB;
+}
+
+td.kt-table-loading>img {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.kt-page {
+	margin-top: -25px;
+	float: right;
+}
+
+/*顶部导航*/
+.navbar-default {
+	background-color: #3A9CB1;
+	border: 0px;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	padding-right: 4px;
+}
+
+.navbar-header>a.kt-brand {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 30px;
+	text-decoration: none;
+	display: block;
+	margin-left: 10px;
+}
+
+.navbar-header>a.kt-brand:hover {
+	color: #fff;
+}
+
+.navbar-header>a.kt-brand:active {
+	color: #fff;
+}
+
+ul.navbar-right>li {
+	margin-left: 15px;
+}
+
+a.kt-active {
+	color: #fff !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #BCD1DD;
+	font-size: 18px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #fff;
+}
+
+/*信息展示*/
+.kt-index-bgb {
+	background-color: #E3F0F1;
+	height: 500px;
+}
+
+.kt-index-bg {
+	height: 500px;
+}
+
+/*页脚*/
+.kt-footer {
+	background-color: #233B4D;
+	height: 40px;
+	padding: 10px;
+	line-height: 20px;
+	color: #fff;
+}
+
+/*登陆页面*/
+.kt-login-bg {
+	background-color: #37617B;
+}
+
+.kt-login-div {
+	background-color: #fff;
+	margin: auto;
+	margin-top: 200px;
+	width: 380px;
+	height: 420px;
+	border-radius: 8px;
+	border: 1px solid #DCCFC1;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.kt-login-div>h1 {
+	color: #233B4D;
+	text-align: center;
+	margin-top: 40px;
+}
+
+.kt-login-div>h4 {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.kt-login-div>h4>span {
+	float: right;
+	font-size: 14px;
+	color: #6C98AE;
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.kt-login-div>h4>span:hover {
+	color: #233B4D;
+}
+
+.kt-login-forget {
+	float: right;
+	font-size: 14px;
+	color: #6C98AE;
+	line-height: 26px;
+	cursor: pointer;
+}
+
+.kt-login-forget:hover {
+	color: #233B4D;
+}
+
+.kt-div-vcode>label {
+	display: block;
+}
+
+.kt-div-vcode>input {
+	display: inline;
+	width: 50%;
+}
+
+.kt-div-vcode>img {
+	float: right;
+	width: 130px;
+	height: 34px;
+	cursor: pointer;
+}
+
+.kt-modal-register {
+	width: 500px;
+	margin-top: 180px
+}
+
+.kt-modal-forget {
+	width: 360px;
+	margin-top: 240px
+}
+
+/*客户操作页面*/
+.kt-main {
+	margin-top: 50px;
+}
+
+/*侧边目录*/
+.kt-sidebar {
+	position: fixed;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: block;
+	padding: 12px;
+	padding-left: 0px;
+	padding-right: 0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* Scrollable contents if viewport is shorter than content. */
+	background-color: #126B85;
+	border-right: 1px solid #eee;
+	overflow-x: hidden;
+}
+
+.kt-ul-sidebar {
+	list-style: none;
+	text-align: center;
+	padding: 0px;
+}
+
+.kt-ul-sidebar>li>a>span.kt-menu-title {
+	display: block;
+	font-size: 14px;
+	color: #fff;
+	margin-top: 5px;
+}
+
+.kt-ul-sidebar>li>a {
+	text-decoration: none;
+	display: block;
+}
+
+.kt-ul-sidebar>li {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 1px;
+}
+
+.kt-ul-sidebar>li.active {
+	background-color: #3A9CB1;
+}
+
+.kt-ul-sidebar>li:hover {
+	background-color: #3A9CB1;
+}
+
+.kt-ul-sidebar>li>a>span.glyphicon {
+	font-size: 45px;
+	color: #fff;
+}
+/*TAB标签页内容*/
+div.kt-home-a {
+	margin-top: 12px;
+	background-color: #f2f2f2;
+	height: 250px;
+	border-radius: 4px;
+	padding: 15px
+}
+
+.kt-tab-title {
+	padding-left: 5px;
+	border-left: 3px solid #AD3642;
+	font-size:20px;
+}
+
+div.kt-device-content {
+	margin-top: 12px;
+}
+
+/*设备管理*/
+div.kt-modal-device {
+	margin-top: 180px;
+}
+
+/*组管理*/
+.kt-modal-group >.modal-lg{
+	width:980px;
+	height:800px;
+}
+
+.kt-modal-group .modal-body{
+	position:static;
+	height:684px;
+}
+
+.kt-div-select-group{
+	height:370px;
+	overflow: auto;
+}
+
+.kt-table-select-group{
+	height:100%;
+}
+
+.kt-textarea{
+	margin-top:10px;
+	resize: none;
+	height:800px;
+	width:100%;
+}
+
+.kt-modal-group-show >.modal-lg{
+	width:800px;
+	height:400px;
+	margin-top:100px;
+}
+
+
+/*虚拟设备管理*/
+.kt-virtual-textarea{
+	margin-top:0px;
+}
+
+.kt-virtual-a{
+	margin-left:15px;
+	margin-right:15px;
+	margin-top: 12px;
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	padding: 15px
+}
+
+#div_send_a{
+	display:none
+}
+
+#div_send_b{
+	display:none
+}
